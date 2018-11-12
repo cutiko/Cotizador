@@ -46,6 +46,7 @@ public class InputCommentsFragment extends Fragment {
             public void onClick(View view) {
                 Machines machines = (Machines) getActivity().getIntent().getSerializableExtra(MACHINES_DETAILS);
                 new SendComments().fromUser(machines.getKey(), commentEt.getText().toString());
+                commentEt.setText("");
             }
         });
 
