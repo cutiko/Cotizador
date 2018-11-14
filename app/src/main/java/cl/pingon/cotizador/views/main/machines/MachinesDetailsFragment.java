@@ -18,24 +18,20 @@ import cl.pingon.cotizador.model.Machines;
 import cl.pingon.cotizador.model.MachinesDetails;
 import cl.pingon.cotizador.presenters.GetMachines;
 
-public class MachinesDetailsFragment extends Fragment implements MachinesDetailsCallback{
+public class MachinesDetailsFragment extends Fragment implements MachinesDetailsCallback {
 
     public static final String MACHINES_DETAILS = "cl.pingon.cotizador.views.main.visit.KEY.MACHINES_DETAILS";
-
 
     private ImageView imageView;
     private TextView nameTv, configurationTv, electricConsumptionTv, verticalReachTv, horizontalReachTv, maxLoadTv;
     private Fragment inputCommentsFragment;
 
-
     public MachinesDetailsFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_machines_details, container, false);
     }
 
@@ -53,9 +49,7 @@ public class MachinesDetailsFragment extends Fragment implements MachinesDetails
         Machines machines = (Machines) getActivity().getIntent().getSerializableExtra(MACHINES_DETAILS);
         new GetMachines(this).withKey(machines.getKey());
 
-
     }
-
 
     @Override
     public void done(MachinesDetails machinesDetails) {
@@ -68,7 +62,5 @@ public class MachinesDetailsFragment extends Fragment implements MachinesDetails
         maxLoadTv.setText(machinesDetails.getMax_load());
 
     }
-
-
 
 }
