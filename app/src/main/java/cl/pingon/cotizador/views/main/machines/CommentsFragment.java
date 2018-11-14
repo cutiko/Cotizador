@@ -9,26 +9,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import cl.pingon.cotizador.R;
-import cl.pingon.cotizador.adapters.CategoriesAdapter;
 import cl.pingon.cotizador.adapters.CommentsAdapter;
 import cl.pingon.cotizador.data.Nodes;
-import cl.pingon.cotizador.model.Categories;
-import cl.pingon.cotizador.model.Comments;
 import cl.pingon.cotizador.model.Machines;
-import cl.pingon.cotizador.model.MachinesDetails;
 
 public class CommentsFragment extends Fragment {
 
     public static final String MACHINES_DETAILS = "cl.pingon.cotizador.views.main.visit.KEY.MACHINES_DETAILS";
     private CommentsAdapter adapter;
     private RecyclerView recyclerView;
-    private String comments = "comments";
 
     public CommentsFragment() {
     }
@@ -47,8 +40,8 @@ public class CommentsFragment extends Fragment {
 
         Machines machines = (Machines) getActivity().getIntent().getSerializableExtra(MACHINES_DETAILS);
 
-        FirebaseRecyclerOptions<Comments> options = new FirebaseRecyclerOptions.Builder<Comments>()
-                .setQuery(new Nodes().comments(machines.getKey()), Comments.class)
+        FirebaseRecyclerOptions<String> options = new FirebaseRecyclerOptions.Builder<String>()
+                .setQuery(new Nodes().comments(machines.getKey()), String.class)
                 .setLifecycleOwner(getActivity())
                 .build();
 
